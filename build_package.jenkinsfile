@@ -1,3 +1,8 @@
+
+def getBranchName() {
+    return params.ref.replaceAll("refs/heads/", "")
+}
+
 pipeline {
     agent any
     tools {
@@ -9,8 +14,8 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                def branch = params.ref.replaceAll("refs/heads/", "")
-                echo "Will deploy test10 t ${params.ref} ${branch}"
+                String branch = getBranchName()
+                echo "Will deploy test10 t ${params.ref} ${getBranchName()}"
                 sh 'ls'
             }
         }

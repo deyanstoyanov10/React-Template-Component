@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                String branch = params.ref.replaceAll("refs/heads/", "")
+                def branch = params.ref.replaceAll("refs/heads/", "")
                 echo "Will deploy test10 t ${params.ref} ${branch}"
                 sh 'ls'
             }

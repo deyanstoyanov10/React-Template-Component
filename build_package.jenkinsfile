@@ -3,10 +3,13 @@ pipeline {
     tools {
         nodejs "nodejs"
     }
+    parameters {
+        string(name: 'payload', defaultValue: 'payload', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy to ${payload}"
+                echo "Will deploy to ${params.payload}"
             }
         }
     }

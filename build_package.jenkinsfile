@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                sh 'node --version'
+                echo "Will deploy to ${payload}"
             }
         }
     }

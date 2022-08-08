@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy to ${params.payload}"
+                echo "Will deploy test to ${params.payload}"
             }
         }
     }

@@ -14,8 +14,13 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy test10 ${getBranchName()}"
-                sh 'git branch'
+                script {
+                    String branch = getBranchName()
+                    sh '''
+                        git checkout $branch
+                        git branch
+                    '''
+                }
             }
         }
     }

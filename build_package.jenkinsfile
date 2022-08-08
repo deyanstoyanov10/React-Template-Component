@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy test6 to ${params.payload} ${env.GIT_BRANCH}"
+                echo "Will deploy test7 to ${params.payload} ${env.GIT_BRANCH}"
             }
         }
     }

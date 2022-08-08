@@ -14,8 +14,8 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy test10 t ${params.ref} ${getBranchName()}"
-                sh 'ls'
+                echo "Will deploy test10 ${getBranchName()}"
+                sh 'git branch'
             }
         }
     }

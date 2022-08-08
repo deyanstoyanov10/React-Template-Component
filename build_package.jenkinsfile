@@ -12,15 +12,17 @@ pipeline {
         string(name: 'ref', defaultValue: 'master', description: 'Who should I say hello to?')
     }
     stages {
-        stage('Test Hook') {
+        stage('Checkout') {
             steps {
                 script {
                     String branch = getBranchName()
-                    sh '''
-                        git checkout ${branch}
-                        git branch
-                    '''
+                    sh "git checkout ${branch}"
                 }
+            }
+        }
+        stage('Git branch') {
+            steps {
+                sh "git branch"
             }
         }
     }

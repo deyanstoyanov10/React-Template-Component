@@ -10,7 +10,7 @@ pipeline {
         stage('Test Hook') {
             steps {
                 String branch = params.ref.replace("refs/heads/", "")
-                echo "Will deploy test9 t ${params.ref} ${branch}"
+                echo "Will deploy test10 t ${params.ref} ${branch}"
                 sh 'ls'
             }
         }

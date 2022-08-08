@@ -1,4 +1,3 @@
-
 def getBranchName() {
     return params.ref.replaceAll("refs/heads/", "")
 }

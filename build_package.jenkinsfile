@@ -14,7 +14,6 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                String branch = getBranchName()
                 echo "Will deploy test10 t ${params.ref} ${getBranchName()}"
                 sh 'ls'
             }

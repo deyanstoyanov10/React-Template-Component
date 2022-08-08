@@ -9,7 +9,9 @@ pipeline {
     stages {
         stage('Test Hook') {
             steps {
-                echo "Will deploy test9 t ${params.ref} ${env.GIT_BRANCH}"
+                String branch = params.ref.replace("refs/heads/", "")
+                echo "Will deploy test9 t ${params.ref} ${branch}"
+                sh 'ls'
             }
         }
     }

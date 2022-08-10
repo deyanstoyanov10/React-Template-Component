@@ -1,6 +1,6 @@
 {
   "name": "@deyanstoyanov10/react-template-component",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Test React Component",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

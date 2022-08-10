@@ -45,6 +45,25 @@ pipeline {
                 }
             }
         }
+        stage('Commit Version') {
+            steps {
+                dir("${PROJECT}") {
+                    sh '''
+                        git add package.json
+                        git commit -m "Update package version"
+                    '''
+                }
+            }
+        }
+        stage('Push Version') {
+            steps {
+                dir("${PROJECT}") {
+                    withCredentials([gitUsernamePassword(credentialsId: '72722a3a-728b-4067-9dee-22b8d2edbb4b', gitToolName: 'Default')]) {
+                        sh "git push"
+                    }
+                }
+            }
+        }
     }
     post {
         always {

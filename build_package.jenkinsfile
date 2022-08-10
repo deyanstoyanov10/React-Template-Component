@@ -15,13 +15,25 @@ pipeline {
                 }
             }
         }
-        stage('Git branch') {
+        stage('Install dependencies') {
             steps {
-                sh '''
-                    cd $PROJECT
-                    ls
-                    git branch
-                '''
+                dir("${PROJECT}") {
+                    sh "npm install"
+                }
+            }
+        }
+        stage('Version Update') {
+            steps {
+                dir("${PROJECT}") {
+                    sh "npm version patch"
+                }
+            }
+        }
+        stage('Status') {
+            steps {
+                dir("${PROJECT}") {
+                    sh "git status"
+                }
             }
         }
     }

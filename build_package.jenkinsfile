@@ -4,19 +4,24 @@ pipeline {
         nodejs "nodejs"
     }
     parameters {
+        string(name: 'PROJECT', defaultValue: '')
         string(name: 'BRANCH', defaultValue: 'master')
     }
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    echo "Branch ${params.BRANCH}"
+
+                withCredentials([gitUsernamePassword(credentialsId: '72722a3a-728b-4067-9dee-22b8d2edbb4b', gitToolName: 'Default')]) {
+                    sh "git clone ${params.BRANCH}"
                 }
             }
         }
         stage('Git branch') {
             steps {
-                sh "git --version"
+                sh '''
+                    cd $PROJECT
+                    ls
+                '''
             }
         }
     }

@@ -1,29 +1,22 @@
-def getBranchName() {
-    return params.ref.replaceAll("refs/heads/", "")
-}
-
 pipeline {
     agent any
     tools {
         nodejs "nodejs"
     }
     parameters {
-        string(name: 'ref', defaultValue: '')
-        string(name: 'action', defaultValue: 'closed')
+        string(name: 'BRANCH', defaultValue: 'master')
     }
     stages {
         stage('Checkout') {
             steps {
                 script {
-                    String branch = getBranchName()
-                    echo "Branch ${branch}"
+                    echo "Branch ${params.BRANCH}"
                 }
             }
         }
         stage('Git branch') {
             steps {
-                sh "git branch"
-                echo "Test2"
+                sh "git --version"
             }
         }
     }

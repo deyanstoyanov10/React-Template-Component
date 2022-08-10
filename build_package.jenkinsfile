@@ -49,8 +49,6 @@ pipeline {
             steps {
                 dir("${PROJECT}") {
                     sh '''
-                        git config --global user.email "didko_s@abv.bg"
-                        git config --global user.name "PlatformCIBuilder"
                         git add package.json
                         git commit -m "Update package version"
                     '''

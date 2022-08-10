@@ -10,9 +10,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-
                 withCredentials([gitUsernamePassword(credentialsId: '72722a3a-728b-4067-9dee-22b8d2edbb4b', gitToolName: 'Default')]) {
-                    sh "git clone ${params.BRANCH}"
+                    sh "git clone --branch ${params.BRANCH} https://github.com/deyanstoyanov10/${params.PROJECT}.git"
                 }
             }
         }
@@ -21,6 +20,7 @@ pipeline {
                 sh '''
                     cd $PROJECT
                     ls
+                    git branch
                 '''
             }
         }

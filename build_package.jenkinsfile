@@ -29,10 +29,19 @@ pipeline {
                 }
             }
         }
-        stage('Status') {
+        stage('Build Package') {
             steps {
                 dir("${PROJECT}") {
-                    sh "git status"
+                    sh "npm rollup"
+                }
+            }
+        }
+        stage('Publish Package') {
+            steps {
+                dir("${PROJECT}") {
+                    configFileProvider([configFile(fileId: '61540cbe-18c9-42b4-96bb-40a53d1961de', targetLocation: '.npmrc')]) {
+                        sh "npm publish"
+                    }
                 }
             }
         }

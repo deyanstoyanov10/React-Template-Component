@@ -32,7 +32,7 @@ pipeline {
         stage('Build Package') {
             steps {
                 dir("${PROJECT}") {
-                    sh "npm rollup"
+                    sh "npm run rollup"
                 }
             }
         }

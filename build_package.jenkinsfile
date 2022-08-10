@@ -25,7 +25,7 @@ pipeline {
         stage('Version Update') {
             steps {
                 dir("${PROJECT}") {
-                    sh "npm version patch"
+                    sh "npm version patch --no-git-tag-version"
                 }
             }
         }

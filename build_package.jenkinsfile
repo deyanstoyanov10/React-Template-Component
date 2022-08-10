@@ -8,14 +8,15 @@ pipeline {
         nodejs "nodejs"
     }
     parameters {
-        string(name: 'ref', defaultValue: 'master', description: 'Who should I say hello to?')
+        string(name: 'ref', defaultValue: '')
+        string(name: 'action', defaultValue: 'closed')
     }
     stages {
         stage('Checkout') {
             steps {
                 script {
                     String branch = getBranchName()
-                    sh "git checkout ${branch}"
+                    echo "Branch ${branch}"
                 }
             }
         }
